@@ -6,10 +6,11 @@ import { AngularSvgIconPreloaderModule } from 'angular-svg-icon-preloader';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TodosComponent } from './pages/todos/todos.component';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, TodosComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
