@@ -6,6 +6,7 @@ import { AngularSvgIconPreloaderModule } from 'angular-svg-icon-preloader';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,6 +14,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    SharedModule,
     AngularSvgIconModule.forRoot(),
     AngularSvgIconPreloaderModule.forRoot({
       configUrl: '../assets/icons.json',
