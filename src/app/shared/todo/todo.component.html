@@ -1,1 +1,31 @@
-<p>todo works!</p>
+<div
+  class="shadow-yellow-300 min-w-[600px] max-w-[600px] grid grid-cols-todo my-1 items-center px-4 py-2 ml-4 rounded shadow"
+>
+  <input
+    type="checkbox"
+    name="done"
+    id="done"
+    [checked]="todo.done"
+    class=""
+    (change)="toggleDone(todo)"
+  />
+  <p class="px-2 overflow-hidden whitespace-nowrap overflow-ellipsis">
+    {{ todo.title }}
+  </p>
+  <p class="px-2 overflow-hidden whitespace-nowrap overflow-ellipsis">
+    {{ todo.description }}
+  </p>
+
+  <svg-icon
+    name="edit"
+    class="mx-auto"
+    svgClass="h-6 w-6 text-blue-400"
+    (click)="editTodo(todo)"
+  ></svg-icon>
+  <svg-icon
+    name="trash"
+    class="mx-auto"
+    svgClass="h-6 w-6 text-red-500"
+    (click)="deleteTodo(todo.id)"
+  ></svg-icon>
+</div>
