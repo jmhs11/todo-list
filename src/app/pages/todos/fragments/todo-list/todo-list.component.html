@@ -1,1 +1,22 @@
-<div>todo-list</div>
+<ng-container *ngIf="(todoService.todos$ | async)!.length > 0; else noTodos">
+  <div
+    class="flex flex-col max-h-[80vh] max-w-fit pr-2 gap-2 overflow-x-hidden overflow-y-auto scrollbar h-full"
+  >
+    <app-todo
+      *ngFor="let todo of todoService.todos$ | async"
+      [todo]="todo"
+      (onToggleDone)="onToggleDone($event)"
+      (onEditTodo)="onEditTodo($event)"
+      (onDeleteTodo)="onDeleteTodo($event)"
+    ></app-todo>
+  </div>
+</ng-container>
+
+<ng-template #noTodos>
+  <div class="flex flex-col items-center justify-center h-full">
+    <div class="text-center">
+      <h1 class="text-2xl font-bold">No Todos</h1>
+      <p class="text-lg">Add one by submitting the form</p>
+    </div>
+  </div>
+</ng-template>
