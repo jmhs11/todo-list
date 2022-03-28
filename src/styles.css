@@ -2,3 +2,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: theme("colors.yellow.200") theme("colors.yellow.300");
+  }
+
+  .scrollbar::-webkit-scrollbar {
+    width: 5px;
+    height: 15px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: theme("colors.yellow.100");
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: theme("colors.yellow.300");
+    border-radius: 100vh;
+    border: 3px solid theme("colors.yellow.300");
+  }
+}
