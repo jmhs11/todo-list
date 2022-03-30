@@ -7,7 +7,7 @@ import { Todo } from 'src/app/shared/todo/models/todo.model';
 })
 export class TodosComponent implements OnInit {
   todos: Todo[] = [];
-  editTodo!: Todo;
+  editTodo!: Todo | null;
 
   constructor() {}
 
@@ -15,5 +15,9 @@ export class TodosComponent implements OnInit {
 
   onEditTodo(todo: Todo) {
     this.editTodo = todo;
+  }
+
+  onDeleteTodo() {
+    this.editTodo = null;
   }
 }

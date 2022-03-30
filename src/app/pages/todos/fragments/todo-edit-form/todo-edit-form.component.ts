@@ -22,9 +22,15 @@ export class TodoEditFormComponent implements OnInit {
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['selectedTodo'] && !changes['selectedTodo'].firstChange) {
+    if (
+      changes['selectedTodo'] &&
+      !changes['selectedTodo'].firstChange &&
+      !!changes['selectedTodo'].currentValue
+    ) {
       this.isHidden = false;
       this.editTodoForm.patchValue(changes['selectedTodo'].currentValue);
+    } else {
+      this.isHidden = true;
     }
   }
 

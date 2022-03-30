@@ -8,6 +8,7 @@ import { TodoService } from 'src/app/shared/todo/services/todo.service';
 })
 export class TodoListComponent implements OnInit {
   @Output() editTodo = new EventEmitter<Todo>();
+  @Output() deleteTodo = new EventEmitter<void>();
 
   constructor(readonly todoService: TodoService) {}
 
@@ -37,6 +38,7 @@ export class TodoListComponent implements OnInit {
     this.todoService.deleteTodo(todoId).subscribe({
       next: () => {
         console.log('todo deleted');
+        this.deleteTodo.emit();
       },
       error: (err) => {
         console.error(err);

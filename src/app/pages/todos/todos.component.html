@@ -3,11 +3,12 @@
     <app-todo-form></app-todo-form>
     <app-todo-edit-form
       [isHidden]="!editTodo"
-      [selectedTodo]="editTodo"
+      [selectedTodo]="editTodo!"
     ></app-todo-edit-form>
   </div>
   <app-todo-list
-    class="grid place-items-center"
+    class="place-items-center grid"
     (editTodo)="onEditTodo($event)"
+    (deleteTodo)="onDeleteTodo()"
   ></app-todo-list>
 </div>
