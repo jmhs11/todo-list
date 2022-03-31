@@ -1,4 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Todo } from 'src/app/shared/todo/models/todo.model';
 import { TodoService } from 'src/app/shared/todo/services/todo.service';
@@ -15,7 +21,11 @@ export class TodoFormComponent implements OnInit {
 
   @Output() onSubmitForm = new EventEmitter<Todo>();
 
-  constructor(private fb: FormBuilder, private todoService: TodoService) {}
+  constructor(
+    private fb: FormBuilder,
+    private todoService: TodoService,
+    private el: ElementRef
+  ) {}
 
   ngOnInit(): void {}
 
@@ -31,6 +41,9 @@ export class TodoFormComponent implements OnInit {
     this.todoService.addTodo(todo).subscribe({
       next: (todo) => {
         this.todoForm.reset();
+        this.el.nativeElement
+          .querySelector('[formcontrolname="title"]')
+          .focus();
       },
       error: (err) => {
         console.error(err);
