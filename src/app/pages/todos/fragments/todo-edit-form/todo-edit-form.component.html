@@ -1,29 +1,29 @@
-<div class="max-w-min mx-auto" *ngIf="!isHidden">
+<div class="mx-auto max-w-min">
   <h3 class="text-2xl">Edit Todo</h3>
 
   <form
     (submit)="onSubmit()"
     [formGroup]="editTodoForm"
-    class="grid-cols-form grid-rows-form grid gap-2"
+    class="grid gap-2 grid-cols-form grid-rows-form"
   >
     <label for="title" class="self-end">Title:</label>
     <input
       id="title"
       type="text"
       formControlName="title"
-      class="shadow-yellow-300 col-start-1 row-start-2 px-4 py-2 rounded shadow"
+      class="col-start-1 row-start-2 px-4 py-2 rounded shadow shadow-yellow-300"
     />
     <label for="description" class="self-end">Description:</label>
     <input
       id="description"
       type="text"
       formControlName="description"
-      class="shadow-yellow-300 col-start-2 row-start-2 px-4 py-2 rounded shadow"
+      class="col-start-2 row-start-2 px-4 py-2 rounded shadow shadow-yellow-300"
     />
     <button
       [disabled]="!editTodoForm.valid"
       type="submit"
-      class="disabled:opacity-20 shadow-yellow-300 col-span-2 px-4 py-2 bg-yellow-300 rounded shadow"
+      class="col-span-2 px-4 py-2 bg-yellow-300 rounded shadow disabled:opacity-20 shadow-yellow-300"
     >
       Submit
     </button>

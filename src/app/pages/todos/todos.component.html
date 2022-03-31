@@ -2,12 +2,13 @@
   <div>
     <app-todo-form></app-todo-form>
     <app-todo-edit-form
-      [isHidden]="!editTodo"
+      *ngIf="editMode"
       [selectedTodo]="editTodo!"
+      (onSubmitEvent)="onSubmit()"
     ></app-todo-edit-form>
   </div>
   <app-todo-list
-    class="place-items-center grid"
+    class="grid place-items-center"
     (editTodo)="onEditTodo($event)"
     (deleteTodo)="onDeleteTodo()"
   ></app-todo-list>
