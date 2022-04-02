@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {
       gridTemplateRows: {
-        form: "repeat(3, 1fr)",
+        form: "repeat(5, auto)",
       },
       gridTemplateColumns: {
         form: "repeat(2, 1fr)",

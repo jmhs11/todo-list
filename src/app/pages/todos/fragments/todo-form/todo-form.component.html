@@ -1,28 +1,37 @@
-<div class="mx-auto my-8 max-w-min">
-  <h3 class="text-2xl">New Todo</h3>
-
+<div class="mx-auto my-8">
   <form
     [formGroup]="todoForm"
     (ngSubmit)="onSubmit(todoForm)"
-    class="grid gap-2 mx-auto grid-cols-form grid-rows-form max-w-fit"
+    class="grid max-w-3xl gap-2 mx-auto grid-cols-form grid-rows-form"
   >
-    <label for="title" class="self-end">Title:</label>
+    <h3 class="col-span-2 col-start-1 row-start-1 text-2xl">New Todo</h3>
+    <label for="title" class="col-start-1 row-start-2">Title:</label>
     <input
       id="title"
       formControlName="title"
-      class="col-start-1 row-start-2 px-4 py-2 rounded shadow shadow-yellow-300"
+      class="col-start-1 row-start-3 px-4 py-2 rounded shadow shadow-yellow-300"
     />
-    <label for="description" class="self-end">Description:</label>
+    <label for="description" class="col-start-2 row-start-2"
+      >Description:</label
+    >
     <input
       id="description"
       formControlName="description"
-      class="col-start-2 row-start-2 px-4 py-2 rounded shadow shadow-yellow-300"
+      class="col-start-2 row-start-3 px-4 py-2 rounded shadow shadow-yellow-300"
     />
+
+    <p class="col-start-1 row-start-4" hidden>
+      the title must be less than 50 characters
+    </p>
+    <p class="col-start-2 row-start-4">
+      the title must be less than 50 charactersthe title must be less than 50
+      characters
+    </p>
 
     <button
       [disabled]="!todoForm.valid"
       type="submit"
-      class="col-span-2 px-4 py-2 bg-yellow-300 rounded shadow disabled:opacity-20 shadow-yellow-300"
+      class="col-span-2 row-start-5 px-4 py-2 bg-yellow-300 rounded shadow disabled:opacity-20 shadow-yellow-300"
     >
       Submit
     </button>
