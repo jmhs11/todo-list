@@ -1,6 +1,7 @@
 {
   "name": "todo-list",
   "version": "0.0.0",
+  "private": true,
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -12,7 +13,12 @@
     "db": "json-server --watch ./src/db/db.json",
     "prepare": "husky install"
   },
-  "private": true,
+  "lint-staged": {
+    "src/**/*.ts": [
+      "npx eslint . --fix",
+      "git add"
+    ]
+  },
   "dependencies": {
     "@angular/animations": "~13.2.0",
     "@angular/common": "~13.2.0",
