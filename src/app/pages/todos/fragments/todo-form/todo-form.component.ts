@@ -21,6 +21,14 @@ export class TodoFormComponent implements OnInit {
 
   @Output() onSubmitForm = new EventEmitter<Todo>();
 
+  get title() {
+    return this.todoForm.controls['title'];
+  }
+
+  get description() {
+    return this.todoForm.controls['description'];
+  }
+
   constructor(
     private fb: FormBuilder,
     private todoService: TodoService,
