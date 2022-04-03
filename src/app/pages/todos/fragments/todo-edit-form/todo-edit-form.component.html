@@ -2,7 +2,7 @@
   <form
     (submit)="onSubmit()"
     [formGroup]="editTodoForm"
-    class="grid-cols-form grid-rows-form grid max-w-3xl gap-2 mx-auto"
+    class="mx-auto grid max-w-3xl grid-cols-form grid-rows-form gap-2"
   >
     <h3 class="col-span-2 col-start-1 row-start-1 text-2xl">Edit Todo</h3>
     <label for="title" class="col-start-1 row-start-2">Title:</label>
@@ -10,7 +10,7 @@
       id="title"
       type="text"
       formControlName="title"
-      class="shadow-yellow-300 col-start-1 row-start-3 px-4 py-2 rounded shadow"
+      class="col-start-1 row-start-3 rounded px-4 py-2 shadow shadow-yellow-300"
     />
     <label for="description" class="col-start-2 row-start-2"
       >Description:</label
@@ -19,7 +19,7 @@
       id="description"
       type="text"
       formControlName="description"
-      class="shadow-yellow-300 col-start-2 row-start-3 px-4 py-2 rounded shadow"
+      class="col-start-2 row-start-3 rounded px-4 py-2 shadow shadow-yellow-300"
     />
 
     <div
@@ -47,7 +47,7 @@
     <button
       [disabled]="!editTodoForm.valid"
       type="submit"
-      class="disabled:opacity-20 shadow-yellow-300 col-span-2 row-start-5 px-4 py-2 bg-yellow-300 rounded shadow"
+      class="col-span-2 row-start-5 rounded bg-yellow-300 px-4 py-2 shadow shadow-yellow-300 disabled:opacity-20"
     >
       Submit
     </button>
