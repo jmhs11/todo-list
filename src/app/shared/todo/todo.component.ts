@@ -12,11 +12,14 @@ export class TodoComponent implements OnInit {
   @Output() onToggleDone = new EventEmitter<Todo>();
   @Output() onDeleteTodo = new EventEmitter<number>();
 
+  isExpanded: boolean = false;
+
   constructor() {}
 
   ngOnInit(): void {}
 
-  editTodo(todo: Todo) {
+  editTodo($event: Event, todo: Todo) {
+    $event.stopPropagation();
     this.onEditTodo.emit(todo);
   }
 
@@ -24,7 +27,12 @@ export class TodoComponent implements OnInit {
     this.onToggleDone.emit({ ...todo, done: !todo.done });
   }
 
-  deleteTodo(todoId: number) {
+  deleteTodo($event: Event, todoId: number) {
+    $event.stopPropagation();
     this.onDeleteTodo.emit(todoId);
+  }
+
+  expandTodo() {
+    this.isExpanded = !this.isExpanded;
   }
 }

@@ -1,18 +1,26 @@
 <div
-  class="shadow-yellow-300 min-w-[600px] max-w-[600px] grid grid-cols-todo my-1 items-center px-4 py-2 ml-4 rounded shadow"
+  class="my-1 ml-4 grid min-w-[600px] max-w-[600px] cursor-pointer grid-cols-todo items-center rounded px-4 py-2 shadow shadow-yellow-300"
+  (click)="expandTodo()"
 >
   <input
     type="checkbox"
     name="done"
     id="done"
+    class="mt-1 mb-auto place-self-center"
     [checked]="todo.done"
-    class=""
     (change)="toggleDone(todo)"
+    (click)="$event.stopPropagation()"
   />
-  <p class="px-2 overflow-hidden whitespace-nowrap overflow-ellipsis">
+  <p
+    class="px-2"
+    [ngClass]="isExpanded ? 'break-words line-clamp-none' : 'line-clamp-1'"
+  >
     {{ todo.title }}
   </p>
-  <p class="px-2 overflow-hidden whitespace-nowrap overflow-ellipsis">
+  <p
+    class="px-2"
+    [ngClass]="isExpanded ? 'break-words line-clamp-none' : 'line-clamp-1'"
+  >
     {{ todo.description }}
   </p>
 
@@ -20,12 +28,12 @@
     name="edit"
     class="mx-auto"
     svgClass="h-6 w-6 text-blue-400"
-    (click)="editTodo(todo)"
+    (click)="editTodo($event, todo)"
   ></svg-icon>
   <svg-icon
     name="trash"
     class="mx-auto"
     svgClass="h-6 w-6 text-red-500"
-    (click)="deleteTodo(todo.id)"
+    (click)="deleteTodo($event, todo.id)"
   ></svg-icon>
 </div>
