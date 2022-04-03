@@ -17,9 +17,17 @@ import { TodoService } from 'src/app/shared/todo/services/todo.service';
 })
 export class TodoEditFormComponent implements OnInit {
   editTodoForm: FormGroup = this.fb.group({
-    title: ['', [Validators.required]],
-    description: ['', [Validators.required]],
+    title: ['', [Validators.required, Validators.maxLength(50)]],
+    description: ['', [Validators.required, Validators.maxLength(250)]],
   });
+
+  get title() {
+    return this.editTodoForm.controls['title'];
+  }
+
+  get description() {
+    return this.editTodoForm.controls['description'];
+  }
 
   @Input() selectedTodo!: Todo;
   @Output() onSubmitEvent = new EventEmitter<void>();

@@ -1,22 +1,3 @@
 {
-  "todos": [
-    {
-      "id": 1648494500676,
-      "title": "asdasd",
-      "description": "asd",
-      "done": false
-    },
-    {
-      "id": 1648494530486,
-      "title": "asd",
-      "description": "asd",
-      "done": false
-    },
-    {
-      "id": 1648494533444,
-      "title": "asdasd",
-      "description": "asdasd",
-      "done": false
-    }
-  ]
+  "todos": []
 }
