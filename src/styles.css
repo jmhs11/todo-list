@@ -26,8 +26,7 @@
   }
 }
 
-input.ng-dirty.ng-invalid,
-input.ng-touched.ng-invalid {
+input.ng-dirty.ng-touched.ng-invalid {
   box-shadow: 0 1px 3px 0 theme("boxShadowColor.red.500"),
     0 1px 2px -1px theme("boxShadowColor.red.500");
   outline-color: theme("boxShadowColor.red.500");
