@@ -13,13 +13,11 @@ import { TodoService } from 'src/app/shared/todo/services/todo.service';
   selector: 'app-todo-form',
   templateUrl: './todo-form.component.html',
 })
-export class TodoFormComponent implements OnInit {
+export class TodoFormComponent {
   todoForm: FormGroup = this.fb.group({
     title: ['', [Validators.required, Validators.maxLength(50)]],
     description: ['', [Validators.required, Validators.maxLength(250)]],
   });
-
-  @Output() onSubmitForm = new EventEmitter<Todo>();
 
   get title() {
     return this.todoForm.controls['title'];
@@ -35,9 +33,7 @@ export class TodoFormComponent implements OnInit {
     private el: ElementRef
   ) {}
 
-  ngOnInit(): void {}
-
-  onSubmit(form: FormGroup) {
+  addTodo(form: FormGroup) {
     const { title, description } = form.value;
     const todo: Todo = {
       id: Date.now(),

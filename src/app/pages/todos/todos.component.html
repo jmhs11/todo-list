@@ -4,12 +4,12 @@
     <app-todo-edit-form
       *ngIf="editMode"
       [selectedTodo]="editTodo!"
-      (onSubmitEvent)="onSubmit()"
+      (addTodo)="addTodo()"
     ></app-todo-edit-form>
   </div>
   <app-todo-list
     class="grid place-items-center"
     (editTodo)="onEditTodo($event)"
-    (deleteTodo)="onDeleteTodo()"
+    (deleteTodo)="deleteTodo()"
   ></app-todo-list>
 </div>

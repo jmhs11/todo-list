@@ -8,7 +8,7 @@
     id="done"
     class="mt-1 mb-auto place-self-center"
     [checked]="todo.done"
-    (change)="toggleDone(todo)"
+    (change)="onToggleDone(todo)"
     (click)="$event.stopPropagation()"
   />
   <p
@@ -28,12 +28,12 @@
     name="edit"
     class="mx-auto"
     svgClass="h-6 w-6 text-blue-400"
-    (click)="editTodo($event, todo)"
+    (click)="onEditTodo($event, todo)"
   ></svg-icon>
   <svg-icon
     name="trash"
     class="mx-auto"
     svgClass="h-6 w-6 text-red-500"
-    (click)="deleteTodo($event, todo.id)"
+    (click)="onDeleteTodo($event, todo.id)"
   ></svg-icon>
 </div>

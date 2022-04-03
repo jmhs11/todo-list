@@ -6,21 +6,19 @@ import { TodoService } from 'src/app/shared/todo/services/todo.service';
   selector: 'app-todos',
   templateUrl: './todos.component.html',
 })
-export class TodosComponent implements OnInit {
+export class TodosComponent {
   todos: Todo[] = [];
   editTodo!: Todo | null;
   editMode: boolean = false;
 
   constructor(private todoService: TodoService) {}
 
-  ngOnInit(): void {}
-
   onEditTodo(todo: Todo) {
     this.editMode = true;
     this.editTodo = todo;
   }
 
-  onDeleteTodo() {
+  deleteTodo() {
     if (this.editMode) {
       this.todoService.getTodo(this.editTodo!.id).subscribe({
         error: () => {
@@ -30,7 +28,7 @@ export class TodosComponent implements OnInit {
     }
   }
 
-  onSubmit() {
+  addTodo() {
     this.editMode = false;
     this.editTodo = null;
   }

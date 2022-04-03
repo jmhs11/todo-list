@@ -2,6 +2,7 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnChanges,
   OnInit,
   Output,
   SimpleChanges,
@@ -15,7 +16,7 @@ import { TodoService } from 'src/app/shared/todo/services/todo.service';
   templateUrl: './todo-edit-form.component.html',
   styles: [],
 })
-export class TodoEditFormComponent implements OnInit {
+export class TodoEditFormComponent implements OnChanges {
   editTodoForm: FormGroup = this.fb.group({
     title: ['', [Validators.required, Validators.maxLength(50)]],
     description: ['', [Validators.required, Validators.maxLength(250)]],
@@ -30,11 +31,9 @@ export class TodoEditFormComponent implements OnInit {
   }
 
   @Input() selectedTodo!: Todo;
-  @Output() onSubmitEvent = new EventEmitter<void>();
+  @Output() addTodo = new EventEmitter<void>();
 
   constructor(private fb: FormBuilder, private todoService: TodoService) {}
-
-  ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['selectedTodo'] && !!changes['selectedTodo'].currentValue) {
@@ -51,7 +50,7 @@ export class TodoEditFormComponent implements OnInit {
       .subscribe({
         next: (todo) => {
           this.selectedTodo = todo;
-          this.onSubmitEvent.emit();
+          this.addTodo.emit();
         },
         error: (err) => {
           console.error(err);

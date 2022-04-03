@@ -5,31 +5,29 @@ import { Todo } from './models/todo.model';
   selector: 'app-todo',
   templateUrl: './todo.component.html',
 })
-export class TodoComponent implements OnInit {
+export class TodoComponent {
   @Input() todo!: Todo;
 
-  @Output() onEditTodo = new EventEmitter<Todo>();
-  @Output() onToggleDone = new EventEmitter<Todo>();
-  @Output() onDeleteTodo = new EventEmitter<number>();
+  @Output() editTodo = new EventEmitter<Todo>();
+  @Output() toggleDone = new EventEmitter<Todo>();
+  @Output() deleteTodo = new EventEmitter<number>();
 
   isExpanded: boolean = false;
 
   constructor() {}
 
-  ngOnInit(): void {}
-
-  editTodo($event: Event, todo: Todo) {
+  onEditTodo($event: Event, todo: Todo) {
     $event.stopPropagation();
-    this.onEditTodo.emit(todo);
+    this.editTodo.emit(todo);
   }
 
-  toggleDone(todo: Todo) {
-    this.onToggleDone.emit({ ...todo, done: !todo.done });
+  onToggleDone(todo: Todo) {
+    this.toggleDone.emit({ ...todo, done: !todo.done });
   }
 
-  deleteTodo($event: Event, todoId: number) {
+  onDeleteTodo($event: Event, todoId: number) {
     $event.stopPropagation();
-    this.onDeleteTodo.emit(todoId);
+    this.deleteTodo.emit(todoId);
   }
 
   expandTodo() {
