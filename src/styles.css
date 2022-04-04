@@ -2,3 +2,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.yellow.200') theme('colors.yellow.300');
+  }
+
+  .scrollbar::-webkit-scrollbar {
+    width: 5px;
+    height: 15px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: theme('colors.yellow.100');
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: theme('colors.yellow.300');
+    border-radius: 100vh;
+    border: 3px solid theme('colors.yellow.300');
+  }
+}
+
+@layer components {
+  .input-default {
+    @apply mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+  }
+
+  .input-error {
+    @apply mt-1 block w-full rounded-md border-red-300 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50;
+  }
+
+  .input-checkbox {
+    @apply rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 focus:ring-offset-0;
+  }
+}

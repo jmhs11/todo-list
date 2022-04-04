@@ -1,1 +1,39 @@
-<p>todo works!</p>
+<div
+  class="my-1 ml-4 grid min-w-[600px] max-w-[600px] cursor-pointer grid-cols-todo items-center rounded px-4 py-2 shadow shadow-yellow-300"
+  (click)="expandTodo()"
+>
+  <input
+    type="checkbox"
+    name="done"
+    id="done"
+    class="input-checkbox form-checkbox"
+    [checked]="todo.done"
+    (change)="onToggleDone(todo)"
+    (click)="$event.stopPropagation()"
+  />
+  <p
+    class="px-2"
+    [ngClass]="isExpanded ? 'break-words line-clamp-none' : 'line-clamp-1'"
+  >
+    {{ todo.title }}
+  </p>
+  <p
+    class="px-2"
+    [ngClass]="isExpanded ? 'break-words line-clamp-none' : 'line-clamp-1'"
+  >
+    {{ todo.description }}
+  </p>
+
+  <svg-icon
+    name="edit"
+    class="mx-auto"
+    svgClass="h-6 w-6 text-blue-400"
+    (click)="onEditTodo($event, todo)"
+  ></svg-icon>
+  <svg-icon
+    name="trash"
+    class="mx-auto"
+    svgClass="h-6 w-6 text-red-500"
+    (click)="onDeleteTodo($event, todo.id)"
+  ></svg-icon>
+</div>
