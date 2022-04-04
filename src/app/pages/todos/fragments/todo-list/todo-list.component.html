@@ -5,7 +5,6 @@
     <app-todo
       *ngFor="let todo of todoService.todos$ | async"
       [todo]="todo"
-      (toggleDone)="onToggleDone($event)"
       (editTodo)="onEditTodo($event)"
       (deleteTodo)="onDeleteTodo($event)"
     ></app-todo>

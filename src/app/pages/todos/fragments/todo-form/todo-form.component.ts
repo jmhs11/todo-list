@@ -45,6 +45,8 @@ export class TodoFormComponent {
     this.todoService.addTodo(todo).subscribe({
       next: (todo) => {
         this.todoForm.reset();
+        this.todoForm.controls['title'].markAsUntouched();
+        this.todoForm.controls['description'].markAsUntouched();
         this.el.nativeElement
           .querySelector('[formcontrolname="title"]')
           .focus();

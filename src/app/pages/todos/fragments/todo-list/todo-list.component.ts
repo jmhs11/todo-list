@@ -25,15 +25,6 @@ export class TodoListComponent implements OnInit {
     this.editTodo.emit(todo);
   }
 
-  onToggleDone(todo: Todo) {
-    this.todoService.updateTodo(todo.id, todo).subscribe({
-      next: (todo) => {},
-      error: (err) => {
-        console.error(err);
-      },
-    });
-  }
-
   onDeleteTodo(todoId: number) {
     this.todoService.deleteTodo(todoId).subscribe({
       next: () => {

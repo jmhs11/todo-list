@@ -26,8 +26,16 @@
   }
 }
 
-input.ng-dirty.ng-touched.ng-invalid {
-  box-shadow: 0 1px 3px 0 theme('boxShadowColor.red.500'),
-    0 1px 2px -1px theme('boxShadowColor.red.500');
-  outline-color: theme('boxShadowColor.red.500');
+@layer components {
+  .input-default {
+    @apply mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+  }
+
+  .input-error {
+    @apply mt-1 block w-full rounded-md border-red-300 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50;
+  }
+
+  .input-checkbox {
+    @apply rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 focus:ring-offset-0;
+  }
 }

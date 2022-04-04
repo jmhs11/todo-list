@@ -5,25 +5,34 @@
     class="mx-auto grid max-w-3xl grid-cols-form grid-rows-form gap-2"
   >
     <h3 class="col-span-2 col-start-1 row-start-1 text-2xl">New Todo</h3>
-    <label for="title" class="col-start-1 row-start-2">Title:</label>
-    <input
-      id="title"
-      type="text"
-      formControlName="title"
-      class="col-start-1 row-start-3 rounded px-4 py-2 shadow shadow-yellow-300"
-    />
-    <label for="description" class="col-start-2 row-start-2"
-      >Description:</label
-    >
-    <input
-      id="description"
-      type="text"
-      formControlName="description"
-      class="col-start-2 row-start-3 rounded px-4 py-2 shadow shadow-yellow-300"
-    />
+    <label class="col-start-1 row-start-2">
+      <span>Title:</span>
+      <input
+        id="title"
+        type="text"
+        formControlName="title"
+        class="input-default form-input"
+        [ngClass]="{
+          'input-error': title.invalid && title.dirty && title.touched
+        }"
+      />
+    </label>
+    <label class="col-start-2 row-start-2">
+      <span>Description:</span>
+      <input
+        id="description"
+        type="text"
+        formControlName="description"
+        class="input-default form-input"
+        [ngClass]="{
+          'input-error':
+            description.invalid && description.dirty && description.touched
+        }"
+      />
+    </label>
 
     <div
-      class="col-start-1 row-start-4 text-sm text-red-500"
+      class="col-start-1 row-start-3 text-sm text-red-500"
       *ngIf="title.invalid && title.dirty && title.touched"
     >
       <p *ngIf="title.errors?.['required']">The title is required</p>
@@ -33,7 +42,7 @@
     </div>
 
     <div
-      class="col-start-2 row-start-4 text-sm text-red-500"
+      class="col-start-2 row-start-3 text-sm text-red-500"
       *ngIf="description.invalid && description.dirty && description.touched"
     >
       <p *ngIf="description.errors?.['required']">
@@ -47,7 +56,7 @@
     <button
       [disabled]="!todoForm.valid"
       type="submit"
-      class="col-span-2 row-start-5 rounded bg-yellow-300 px-4 py-2 shadow shadow-yellow-300 disabled:opacity-20"
+      class="col-span-2 row-start-4 rounded bg-yellow-300 px-4 py-2 shadow shadow-yellow-300 disabled:opacity-20"
     >
       Submit
     </button>

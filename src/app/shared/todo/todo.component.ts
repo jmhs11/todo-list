@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Todo } from './models/todo.model';
+import { TodoService } from './services/todo.service';
 
 @Component({
   selector: 'app-todo',
@@ -9,12 +10,11 @@ export class TodoComponent {
   @Input() todo!: Todo;
 
   @Output() editTodo = new EventEmitter<Todo>();
-  @Output() toggleDone = new EventEmitter<Todo>();
   @Output() deleteTodo = new EventEmitter<number>();
 
   isExpanded: boolean = false;
 
-  constructor() {}
+  constructor(private todoService: TodoService) {}
 
   onEditTodo($event: Event, todo: Todo) {
     $event.stopPropagation();
@@ -22,7 +22,14 @@ export class TodoComponent {
   }
 
   onToggleDone(todo: Todo) {
-    this.toggleDone.emit({ ...todo, done: !todo.done });
+    this.todoService
+      .updateTodo(todo.id, { ...todo, done: !todo.done })
+      .subscribe({
+        next: (todo) => {},
+        error: (err) => {
+          console.error(err);
+        },
+      });
   }
 
   onDeleteTodo($event: Event, todoId: number) {
@@ -31,6 +38,8 @@ export class TodoComponent {
   }
 
   expandTodo() {
+    console.log('expand');
+
     this.isExpanded = !this.isExpanded;
   }
 }
