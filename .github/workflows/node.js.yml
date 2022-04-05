@@ -26,8 +26,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
     - run: node server.js
       env: 
         FIREBASE_ENV: '${{ secrets.FIREBASE_ENV }}'
-    - run: npm run build
+    - run: npm ci && npm run build
