@@ -3,11 +3,21 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "npm run env && ng serve",
+    "env": "vercel pull && ts-node ./.ci/set-env.ts",
+    "env:prod": "vercel pull && ts-node ./.ci/set-env.ts --environment=prod",
+    "lint": "npx eslint \"src/**/*.{js,jsx,ts,tsx,html}\" --quiet --fix",
+    "build": "npm run config && ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "db": "json-server --watch ./src/db/db.json"
+    "format": "npx prettier \"src/**/*.{js,jsx,ts,tsx,html,css,scss}\" --write",
+    "db": "json-server --watch ./src/db/db.json",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "npx eslint . --fix"
+    ]
   },
   "private": true,
   "dependencies": {
@@ -15,12 +25,16 @@
     "@angular/common": "~13.2.0",
     "@angular/compiler": "~13.2.0",
     "@angular/core": "~13.2.0",
+    "@angular/fire": "7.3.0",
     "@angular/forms": "~13.2.0",
     "@angular/platform-browser": "~13.2.0",
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
     "angular-svg-icon": "12.0.0",
     "angular-svg-icon-preloader": "2.0.1",
+    "firebase": "9.6.10",
+    "firebaseui": "6.0.1",
+    "firebaseui-angular": "6.1.1",
     "rxjs": "~7.5.0",
     "tslib": "2.3.0",
     "zone.js": "~0.11.4"
@@ -29,9 +43,18 @@
     "@angular-devkit/build-angular": "~13.2.6",
     "@angular/cli": "~13.2.6",
     "@angular/compiler-cli": "~13.2.0",
+    "@tailwindcss/forms": "0.5.0",
+    "@tailwindcss/line-clamp": "0.3.1",
     "@types/jasmine": "~3.10.0",
     "@types/node": "12.11.1",
+    "@typescript-eslint/eslint-plugin": "5.17.0",
+    "@typescript-eslint/parser": "5.17.0",
     "autoprefixer": "10.4.4",
+    "dotenv": "16.0.0",
+    "eslint": "8.12.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "husky": "7.0.0",
     "jasmine-core": "~4.0.0",
     "json-server": "0.17.0",
     "karma": "~6.3.0",
@@ -40,7 +63,12 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "postcss": "8.4.12",
+    "prettier": "2.6.2",
+    "prettier-plugin-tailwindcss": "0.1.8",
     "tailwindcss": "3.0.23",
-    "typescript": "~4.5.2"
+    "ts-node": "10.7.0",
+    "typescript": "~4.5.2",
+    "vercel": "24.0.1",
+    "yargs": "17.4.0"
   }
 }
