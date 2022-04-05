@@ -15,6 +15,7 @@ jobs:
         run: |
           npm ci
           npx ng build --prod
+      - uses: actions/checkout@v3    
       - uses: ./
         id: vercel-action-staging
         if: github.event_name == 'pull_request_target'
