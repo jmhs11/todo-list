@@ -1,0 +1,45 @@
+name: Deploy Vercel
+on:
+  push:
+    branches:
+      - main
+  pull_request_target:
+
+jobs:
+  angular:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v3.0.1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: build
+        run: |
+          cd example/angular
+          npm ci
+          npx ng build --prod
+      - uses: ./
+        id: vercel-action-staging
+        if: github.event_name == 'pull_request_target'
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_ANGULAR }}
+          working-directory: ./dist/todo-list
+          alias-domains: |
+            staging.todo-list.vercel-action.kuro.dev
+            pr-{{PR_NUMBER}}.angular.vercel-action.kuro.dev
+      - uses: ./
+        id: vercel-action-production
+        if: github.event_name == 'push'
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_ANGULAR }}
+          working-directory: ./dist/todo-list
+          vercel-args: '--prod '
