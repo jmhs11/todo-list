@@ -13,7 +13,6 @@ jobs:
             ${{ runner.os }}-node-
       - name: build
         run: |
-          cd example/angular
           npm ci
           npx ng build --prod
       - uses: ./
