@@ -23,7 +23,7 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_ANGULAR }}
-          working-directory: ./dist/todo-list
+          working-directory: ./
           alias-domains: |
             staging.todo-list.vercel-action.kuro.dev
             pr-{{PR_NUMBER}}.angular.vercel-action.kuro.dev
@@ -35,5 +35,5 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_ANGULAR }}
-          working-directory: ./dist/todo-list
+          working-directory: ./
           vercel-args: '--prod '
