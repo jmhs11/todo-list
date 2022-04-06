@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "npm run env && ng build",
-    "env": "vercel pull && ts-node ./.cicd/set-env.ts --environment=prod",
+    "env": "ts-node ./.cicd/set-env.ts --environment=prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --watch=false --browsers ChromeHeadless",
     "lint": "npx eslint \"src/**/*.{js,jsx,ts,tsx,html}\" --quiet --fix",

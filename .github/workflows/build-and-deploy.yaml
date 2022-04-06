@@ -18,6 +18,7 @@ jobs:
 
       - run: npm ci
       - run: npm run lint
+      - run: npx vercel pull --token ${{ secrets.VERCEL_TOKEN }}
       - run: npm run build
 
       - name: Display structure of builded files
