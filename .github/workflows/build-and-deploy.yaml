@@ -1,0 +1,77 @@
+name: Build and Deploy to Vercel
+on:
+  # Se ejecutara cuando se haga push a una rama excepto features y
+  # tambien en pull request hacia cualquier rama
+  push:
+    branches:
+      - '!feature/**'
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - run: npm ci
+      - run: npm run lint
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1.3
+        with:
+          envkey_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}
+          envkey_FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
+          envkey_FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+          envkey_FIREBASE_STORAGE_BUCKET: ${{ secrets.FIREBASE_STORAGE_BUCKET }}
+          envkey_FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
+          envkey_FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+      - run: npm run build
+
+      - name: Display structure of builded files
+        run: |
+          ls -la
+          ls -la dist/todo-list/
+          cat .env
+          cat src/environments/environment.prod.ts
+
+      - name: archieve build
+        if: ${{ success() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: dist/todo-list/
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: todo-list
+
+      - name: Display structure of builded files
+        run: |
+          ls -la
+          ls -la todo-list/
+
+      - name: Deploy to Vercel
+        if: ${{ success() }}
+        uses: amondnet/vercel-action@v20.0.1
+        id: vercel-action
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          github-comment: true
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: todo-list
+
+      - name: Preview Url
+        if: ${{ success() }}
+        run: |
+          echo ${{ steps.vercel-action.outputs.preview-url }}
