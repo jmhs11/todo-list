@@ -5,7 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "npm run env && ng build",
+    "env": "vercel pull && ts-node ./.cicd/set-env.ts --environment=prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --watch=false --browsers ChromeHeadless",
     "lint": "npx eslint \"src/**/*.{js,jsx,ts,tsx,html}\" --quiet --fix",
@@ -49,6 +50,7 @@
     "@typescript-eslint/eslint-plugin": "5.17.0",
     "@typescript-eslint/parser": "5.17.0",
     "autoprefixer": "10.4.4",
+    "dotenv": "16.0.0",
     "eslint": "^8.12.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
@@ -64,6 +66,9 @@
     "prettier": "2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.8",
     "tailwindcss": "3.0.23",
-    "typescript": "~4.5.2"
+    "ts-node": "10.7.0",
+    "typescript": "~4.5.2",
+    "vercel": "24.0.1",
+    "yargs": "17.4.0"
   }
 }

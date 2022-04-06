@@ -24,6 +24,8 @@ jobs:
         run: |
           ls -la
           ls -la dist/todo-list/
+          cat .env
+          cat src/environments/environment.prod.ts
 
       - name: archieve build
         if: ${{ success() }}
