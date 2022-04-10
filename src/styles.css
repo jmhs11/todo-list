@@ -38,4 +38,8 @@
   .input-checkbox {
     @apply rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 focus:ring-offset-0;
   }
+
+  .separator {
+    @apply absolute top-1/2 block w-8 border-t border-black;
+  }
 }
