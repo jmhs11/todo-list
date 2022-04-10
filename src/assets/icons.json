@@ -7,6 +7,14 @@
     {
       "iconName": "edit",
       "iconPath": "/assets/icons/edit.svg"
+    },
+    {
+      "iconName": "google",
+      "iconPath": "/assets/icons/google.svg"
+    },
+    {
+      "iconName": "github",
+      "iconPath": "/assets/icons/github.svg"
     }
   ],
   "customIcons": []

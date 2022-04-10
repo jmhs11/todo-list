@@ -1,0 +1,91 @@
+<div class="grid h-full w-screen place-content-center gap-2">
+  <div class="min-w-3xl w-[30rem]">
+    <form [formGroup]="loginForm" class="flex flex-col gap-2">
+      <label for="email" class="flex flex-col gap-2">
+        <span>Email</span>
+        <input
+          formControlName="email"
+          type="email"
+          name="email"
+          id="email"
+          class="input-default form-input"
+          [ngClass]="{
+            'input-error': email.invalid && email.dirty && email.touched
+          }"
+        />
+        <div
+          class="text-sm text-red-500"
+          *ngIf="email.invalid && email.dirty && email.touched"
+        >
+          <p *ngIf="email.errors?.['required']">The email is required</p>
+          <p *ngIf="email.errors?.['pattern']">
+            Please provide a valid email address
+          </p>
+        </div>
+      </label>
+      <label for="password" class="flex flex-col gap-2">
+        <span>Password</span>
+        <input
+          formControlName="password"
+          type="password"
+          name="password"
+          id="password"
+          class="input-default form-input"
+          [ngClass]="{
+            'input-error':
+              password.invalid && password.dirty && password.touched
+          }"
+        />
+        <div
+          class="col-start-1 row-start-3 text-sm text-red-500"
+          *ngIf="password.invalid && password.dirty && password.touched"
+        >
+          <p *ngIf="password.errors?.['required']">The password is required</p>
+          <p *ngIf="password.errors?.['minlength']">
+            The password must have at least 8 characters
+          </p>
+        </div>
+      </label>
+      <div class="flex h-12 justify-between gap-2">
+        <button
+          [disabled]="!loginForm.valid"
+          type="submit"
+          (click)="loginEmail()"
+          class="basis-1/2 items-center justify-center rounded border-2 border-blue-500 py-2 px-4 disabled:opacity-20"
+        >
+          Login
+        </button>
+        <button
+          [disabled]="!loginForm.valid"
+          (click)="registerEmail()"
+          class="basis-1/2 items-center justify-center rounded border-2 border-[#171515] py-2 px-4 disabled:opacity-20"
+        >
+          Register
+        </button>
+      </div>
+    </form>
+    <div class="my-4 flex items-center justify-center">
+      <span
+        class="before:separator after:separator relative inline-flex px-3 text-xl before:left-full after:right-full"
+      >
+        OR
+      </span>
+    </div>
+    <div class="flex h-12 justify-between gap-2">
+      <button
+        (click)="loginWithGoogle()"
+        class="flex grow items-center justify-around rounded border-2 border-blue-500 py-2 px-4"
+      >
+        <svg-icon name="google" ngClass="h-8 w-8"></svg-icon>
+        Login with Google
+      </button>
+      <button
+        (click)="loginWithGithub()"
+        class="flex grow items-center justify-around rounded border-2 border-[#171515] py-2 px-4"
+      >
+        <svg-icon name="github" ngClass="h-8 w-8"></svg-icon>
+        Login with Github
+      </button>
+    </div>
+  </div>
+</div>
