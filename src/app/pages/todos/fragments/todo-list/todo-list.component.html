@@ -1,9 +1,22 @@
-<ng-container *ngIf="(todoService.todos$ | async)!.length > 0; else noTodos">
+<!-- <ng-container *ngIf="(todoService.todos$ | async)!.length > 0; else noTodos">
   <div
     class="scrollbar flex h-full max-h-[80vh] max-w-fit flex-col gap-2 overflow-y-auto overflow-x-hidden pr-2"
   >
     <app-todo
       *ngFor="let todo of todoService.todos$ | async"
+      [todo]="todo"
+      (editTodo)="onEditTodo($event)"
+      (deleteTodo)="onDeleteTodo($event)"
+    ></app-todo>
+  </div>
+</ng-container> -->
+
+<ng-container *ngIf="todos.length > 0; else noTodos">
+  <div
+    class="scrollbar flex h-full max-h-[80vh] max-w-fit flex-col gap-2 overflow-y-auto overflow-x-hidden pr-2"
+  >
+    <app-todo
+      *ngFor="let todo of todos"
       [todo]="todo"
       (editTodo)="onEditTodo($event)"
       (deleteTodo)="onDeleteTodo($event)"

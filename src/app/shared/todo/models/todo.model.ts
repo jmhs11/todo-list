@@ -1,5 +1,6 @@
 export interface Todo {
-  id: number;
+  $key?: string | null;
+  userId?: string;
   title: string;
   description: string;
   done: boolean;

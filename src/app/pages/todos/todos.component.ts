@@ -20,7 +20,7 @@ export class TodosComponent {
 
   deleteTodo() {
     if (this.editMode) {
-      this.todoService.getTodo(this.editTodo!.id).subscribe({
+      this.todoService.getTodo(this.editTodo!.$key!).subscribe({
         error: () => {
           this.editMode = false;
         },
