@@ -36,24 +36,23 @@ export class TodoFormComponent {
   addTodo(form: FormGroup) {
     const { title, description } = form.value;
     const todo: Todo = {
-      id: Date.now(),
       title,
       description,
       done: false,
     };
 
-    this.todoService.addTodo(todo).subscribe({
-      next: (todo) => {
+    this.todoService
+      .addTodo(todo)
+      .then(() => {
         this.todoForm.reset();
         this.todoForm.controls['title'].markAsUntouched();
         this.todoForm.controls['description'].markAsUntouched();
         this.el.nativeElement
           .querySelector('[formcontrolname="title"]')
           .focus();
-      },
-      error: (err) => {
+      })
+      .catch((err) => {
         console.error(err);
-      },
-    });
+      });
   }
 }

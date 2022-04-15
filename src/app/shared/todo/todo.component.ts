@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Todo } from './models/todo.model';
 import { TodoService } from './services/todo.service';
 
@@ -10,7 +10,7 @@ export class TodoComponent {
   @Input() todo!: Todo;
 
   @Output() editTodo = new EventEmitter<Todo>();
-  @Output() deleteTodo = new EventEmitter<number>();
+  @Output() deleteTodo = new EventEmitter<string>();
 
   isExpanded: boolean = false;
 
@@ -22,24 +22,15 @@ export class TodoComponent {
   }
 
   onToggleDone(todo: Todo) {
-    this.todoService
-      .updateTodo(todo.id, { ...todo, done: !todo.done })
-      .subscribe({
-        next: (todo) => {},
-        error: (err) => {
-          console.error(err);
-        },
-      });
+    this.todoService.updateTodo(todo.$key!, { done: !todo.done });
   }
 
-  onDeleteTodo($event: Event, todoId: number) {
+  onDeleteTodo($event: Event, todoId: string) {
     $event.stopPropagation();
     this.deleteTodo.emit(todoId);
   }
 
   expandTodo() {
-    console.log('expand');
-
     this.isExpanded = !this.isExpanded;
   }
 }

@@ -3,7 +3,6 @@ import {
   EventEmitter,
   Input,
   OnChanges,
-  OnInit,
   Output,
   SimpleChanges,
 } from '@angular/core';
@@ -43,18 +42,11 @@ export class TodoEditFormComponent implements OnChanges {
 
   onSubmit() {
     this.todoService
-      .updateTodo(this.selectedTodo.id, {
-        ...this.selectedTodo,
+      .updateTodo(this.selectedTodo.$key!, {
         ...this.editTodoForm.value,
       })
-      .subscribe({
-        next: (todo) => {
-          this.selectedTodo = todo;
-          this.addTodo.emit();
-        },
-        error: (err) => {
-          console.error(err);
-        },
+      .then(() => {
+        this.addTodo.emit();
       });
   }
 }
