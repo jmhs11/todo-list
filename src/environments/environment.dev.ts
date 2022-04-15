@@ -8,5 +8,5 @@ export const environment = {
     appId: 'undefined',
   },
   appVersion: '0.0.0',
-  production: true,
+  production: false,
 };

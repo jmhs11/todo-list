@@ -1,38 +1,3 @@
 {
-  "todos": {
-    "user1": [
-      {
-        "id": 1,
-        "title": "Buy milk",
-        "description": "aksdasd",
-        "completed": false
-      },
-      {
-        "id": 2,
-        "title": "Buy eggs",
-        "description": "34535",
-        "completed": false
-      },
-      {
-        "id": 3,
-        "title": "Buy bread",
-        "description": "dsf5346",
-        "completed": false
-      }
-    ],
-    "user2": [
-      {
-        "id": 1,
-        "title": "Buy milk",
-        "description": "aksdasd",
-        "completed": false
-      },
-      {
-        "id": 2,
-        "title": "Buy eggs",
-        "description": "34535",
-        "completed": false
-      }
-    ]
-  }
+  "todos": []
 }

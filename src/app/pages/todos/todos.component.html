@@ -1,4 +1,15 @@
-<div class="place-items-center grid w-screen h-full">
-  <app-todo-form></app-todo-form>
-  <app-todo-list></app-todo-list>
+<div class="grid h-full w-screen grid-cols-2">
+  <div>
+    <app-todo-form></app-todo-form>
+    <app-todo-edit-form
+      *ngIf="editMode"
+      [selectedTodo]="editTodo!"
+      (addTodo)="addTodo()"
+    ></app-todo-edit-form>
+  </div>
+  <app-todo-list
+    class="grid place-items-center"
+    (editTodo)="onEditTodo($event)"
+    (deleteTodo)="deleteTodo()"
+  ></app-todo-list>
 </div>

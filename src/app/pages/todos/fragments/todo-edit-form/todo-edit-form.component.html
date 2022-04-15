@@ -1,14 +1,14 @@
 <div class="mx-auto my-8">
   <form
-    [formGroup]="todoForm"
-    (ngSubmit)="addTodo(todoForm)"
+    (submit)="onSubmit()"
+    [formGroup]="editTodoForm"
     class="mx-auto grid max-w-3xl grid-cols-form grid-rows-form gap-2"
   >
-    <h3 class="col-span-2 col-start-1 row-start-1 text-2xl">New Todo</h3>
-    <label for="title" class="col-start-1 row-start-2">
+    <h3 class="col-span-2 col-start-1 row-start-1 text-2xl">Edit Todo</h3>
+    <label for="titleEdit" class="col-start-1 row-start-2">
       <span>Title:</span>
       <input
-        id="title"
+        id="titleEdit"
         type="text"
         formControlName="title"
         class="input-default form-input"
@@ -17,10 +17,10 @@
         }"
       />
     </label>
-    <label class="col-start-2 row-start-2">
-      <span>Description:</span>
+    <label for="descriptionEdit" class="col-start-2 row-start-2"
+      ><span>Description:</span>
       <input
-        id="description"
+        id="descriptionEdit"
         type="text"
         formControlName="description"
         class="input-default form-input"
@@ -30,7 +30,6 @@
         }"
       />
     </label>
-
     <div
       class="col-start-1 row-start-3 text-sm text-red-500"
       *ngIf="title.invalid && title.dirty && title.touched"
@@ -54,7 +53,7 @@
     </div>
 
     <button
-      [disabled]="!todoForm.valid"
+      [disabled]="!editTodoForm.valid"
       type="submit"
       class="col-span-2 row-start-4 rounded bg-yellow-300 px-4 py-2 shadow shadow-yellow-300 disabled:opacity-20"
     >
