@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="1000" height="1000"><style>
+    #light-icon {
+      display: inline;
+    }
+    #dark-icon {
+      display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      #light-icon {
+        display: none;
+      }
+      #dark-icon {
+        display: inline;
+      }
+    }
+  </style><g id="light-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="1000" height="1000"><rect width="1000" height="1000" rx="250" ry="250" fill="#555555"></rect><g transform="matrix(1.25,0,0,1.25,0,125)"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="800" height="600"><svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>Layer 1</title>
+  <line stroke-width="50" stroke="#fde047" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_7" y2="300" x2="350" y1="300" x1="150" fill="none"></line>
+  <line stroke-width="50" stroke="#fde047" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_11" y2="220" x2="650" y1="220" x1="150" fill="none"></line>
+  <line stroke-width="50" stroke="#fde047" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_12" y2="380" x2="550" y1="380" x1="150" fill="none"></line>
+  <line stroke-width="50" stroke="#fde047" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_13" y2="140" x2="450" y1="140" x1="150" fill="none"></line>
+  <line stroke-width="50" stroke="#fde047" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_14" y2="460" x2="650" y1="460" x1="150" fill="none"></line>
+ </g>
+</svg></svg></g></svg></g><g id="dark-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="1000" height="1000"><rect width="1000" height="1000" rx="200" ry="200" fill="#555555"></rect><g transform="matrix(1.4545454545454546,0,0,1.4545454545454546,100,100)"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="550" height="550"><svg width="550" height="550" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_15">
+   <line stroke-width="50" stroke="#fde047" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_7" y2="275" x2="225" y1="275" x1="25" fill="none"></line>
+   <line stroke-width="50" stroke="#fde047" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_11" y2="195" x2="525" y1="195" x1="25" fill="none"></line>
+   <line stroke-width="50" stroke="#fde047" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_12" y2="355" x2="425" y1="355" x1="25" fill="none"></line>
+   <line stroke-width="50" stroke="#fde047" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_13" y2="115" x2="325" y1="115" x1="25" fill="none"></line>
+   <line stroke-width="50" stroke="#fde047" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_14" y2="435" x2="525" y1="435" x1="25" fill="none"></line>
+  </g>
+ </g>
+</svg></svg></g></svg></g></svg>
