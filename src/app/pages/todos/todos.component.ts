@@ -8,28 +8,23 @@ import { TodoService } from 'src/app/shared/todo/services/todo.service';
 })
 export class TodosComponent {
   todos: Todo[] = [];
-  editTodo!: Todo | null;
+  editedTodo!: Todo | null;
   editMode: boolean = false;
 
-  constructor(private todoService: TodoService) {}
-
-  onEditTodo(todo: Todo) {
+  onEditTodoAction(todo: Todo) {
     this.editMode = true;
-    this.editTodo = todo;
+    this.editedTodo = todo;
   }
 
-  deleteTodo() {
-    if (this.editMode) {
-      this.todoService.getTodo(this.editTodo!.$key!).subscribe({
-        error: () => {
-          this.editMode = false;
-        },
-      });
+  deleteTodo(todoId: string) {
+    if (this.editMode && this.editedTodo?.$key === todoId) {
+      this.editMode = false;
+      this.editedTodo = null;
     }
   }
 
-  addTodo() {
+  editTodo() {
     this.editMode = false;
-    this.editTodo = null;
+    this.editedTodo = null;
   }
 }
