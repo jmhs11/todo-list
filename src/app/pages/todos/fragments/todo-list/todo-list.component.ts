@@ -11,8 +11,8 @@ import { TodoService } from 'src/app/shared/todo/services/todo.service';
 export class TodoListComponent {
   todos: Todo[] = [];
 
-  @Output() editTodo = new EventEmitter<Todo>();
-  @Output() deleteTodo = new EventEmitter<void>();
+  @Output() editTodoAction = new EventEmitter<Todo>();
+  @Output() deleteTodo = new EventEmitter<string>();
 
   constructor(readonly todoService: TodoService, private auth: AuthService) {
     this.auth.user.subscribe((user) => {
@@ -30,10 +30,17 @@ export class TodoListComponent {
   }
 
   onEditTodo(todo: Todo) {
-    this.editTodo.emit(todo);
+    this.editTodoAction.emit(todo);
   }
 
   onDeleteTodo(todoId: string) {
-    this.todoService.deleteTodo(todoId);
+    this.todoService
+      .deleteTodo(todoId)
+      .then(() => {
+        this.deleteTodo.emit(todoId);
+      })
+      .catch(() => {
+        console.log('error');
+      });
   }
 }

@@ -30,7 +30,7 @@ export class TodoEditFormComponent implements OnChanges {
   }
 
   @Input() selectedTodo!: Todo;
-  @Output() addTodo = new EventEmitter<void>();
+  @Output() editTodo = new EventEmitter<void>();
 
   constructor(private fb: FormBuilder, private todoService: TodoService) {}
 
@@ -46,7 +46,7 @@ export class TodoEditFormComponent implements OnChanges {
         ...this.editTodoForm.value,
       })
       .then(() => {
-        this.addTodo.emit();
+        this.editTodo.emit();
       });
   }
 }
