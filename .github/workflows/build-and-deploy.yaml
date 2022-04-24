@@ -33,6 +33,11 @@ jobs:
           envkey_FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
           envkey_FIREBASE_DATABASE_URL: ${{ secrets.FIREBASE_DATABASE_URL }}
 
+      - name: set env
+        run: npm run env
+
+      - run: rm -rf node_modules
+
       - name: Upload source code to artifact
         if: ${{ success() }}
         uses: actions/upload-artifact@v3
