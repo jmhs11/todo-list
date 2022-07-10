@@ -1,5 +1,5 @@
-<div class="flex h-full w-screen flex-col md:flex-row">
-  <div class="md:basis-1/2">
+<div class="flex h-full w-screen flex-col lg:flex-row">
+  <div class="lg:basis-1/2">
     <app-todo-form></app-todo-form>
     <app-todo-edit-form
       *ngIf="editMode"
@@ -8,7 +8,7 @@
     ></app-todo-edit-form>
   </div>
   <app-todo-list
-    class="md:grid md:basis-1/2 md:place-items-center"
+    class="lg:grid lg:basis-1/2 lg:place-items-center"
     (editTodoAction)="onEditTodoAction($event)"
     (deleteTodo)="deleteTodo($event)"
   ></app-todo-list>

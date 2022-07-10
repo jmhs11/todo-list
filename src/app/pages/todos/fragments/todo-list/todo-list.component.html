@@ -13,7 +13,7 @@
 
 <ng-container *ngIf="todos.length > 0; else noTodos">
   <div
-    class="scrollbar flex h-full max-h-[80vh] max-w-fit flex-col gap-2 overflow-y-auto overflow-x-hidden pr-2"
+    class="scrollbar mx-auto flex h-full max-h-[80vh] max-w-fit flex-col gap-2 overflow-y-auto overflow-x-hidden pr-2"
   >
     <app-todo
       *ngFor="let todo of todos"
