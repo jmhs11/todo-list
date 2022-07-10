@@ -1,5 +1,5 @@
 <div class="grid h-full w-screen place-content-center gap-2">
-  <div class="min-w-3xl w-[30rem]">
+  <div class="md:min-w-3xl w-full p-4 md:w-[30rem]">
     <form [formGroup]="loginForm" class="flex flex-col gap-2">
       <label for="email" class="flex flex-col gap-2">
         <span>Email</span>
@@ -51,7 +51,7 @@
           [disabled]="!loginForm.valid"
           type="submit"
           (click)="loginEmail()"
-          class="basis-1/2 items-center justify-center rounded border-2 border-blue-500 py-2 px-4 disabled:opacity-20"
+          class="basis-1/2 items-center justify-center rounded border-2 border-blue-500 px-4 py-2 disabled:opacity-20"
         >
           Login
         </button>
@@ -74,7 +74,7 @@
     <div class="flex h-12 justify-between gap-2">
       <button
         (click)="loginWithGoogle()"
-        class="flex grow items-center justify-around rounded border-2 border-blue-500 py-2 px-4"
+        class="flex grow items-center justify-around rounded border-2 border-blue-500 px-4 py-2"
       >
         <svg-icon name="google" ngClass="h-8 w-8"></svg-icon>
         Login with Google

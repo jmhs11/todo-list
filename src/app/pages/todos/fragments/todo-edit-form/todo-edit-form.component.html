@@ -2,10 +2,13 @@
   <form
     (submit)="onSubmit()"
     [formGroup]="editTodoForm"
-    class="mx-auto grid max-w-3xl grid-cols-form grid-rows-form gap-2"
+    class="mx-auto grid max-w-3xl auto-rows-min grid-cols-form gap-2 md:grid-rows-form"
   >
-    <h3 class="col-span-2 col-start-1 row-start-1 text-2xl">Edit Todo</h3>
-    <label for="titleEdit" class="col-start-1 row-start-2">
+    <h3 class="col-start-0 col-span-2 row-start-1 text-2xl">Edit Todo</h3>
+    <label
+      for="titleEdit"
+      class="col-span-2 col-start-1 row-start-2 md:col-span-1"
+    >
       <span>Title:</span>
       <input
         id="titleEdit"
@@ -17,7 +20,9 @@
         }"
       />
     </label>
-    <label for="descriptionEdit" class="col-start-2 row-start-2"
+    <label
+      for="descriptionEdit"
+      class="col-span-2 col-start-1 row-start-4 md:col-span-1 md:col-start-2 md:row-start-2"
       ><span>Description:</span>
       <input
         id="descriptionEdit"
@@ -31,7 +36,7 @@
       />
     </label>
     <div
-      class="col-start-1 row-start-3 text-sm text-red-500"
+      class="col-span-2 col-start-1 row-start-3 text-sm text-red-500"
       *ngIf="title.invalid && title.dirty && title.touched"
     >
       <p *ngIf="title.errors?.['required']">The title is required</p>
@@ -41,7 +46,7 @@
     </div>
 
     <div
-      class="col-start-2 row-start-3 text-sm text-red-500"
+      class="col-span-2 col-start-1 row-start-5 text-sm text-red-500 md:col-start-2 md:row-start-3"
       *ngIf="description.invalid && description.dirty && description.touched"
     >
       <p *ngIf="description.errors?.['required']">
@@ -55,7 +60,7 @@
     <button
       [disabled]="!editTodoForm.valid"
       type="submit"
-      class="col-span-2 row-start-4 rounded bg-yellow-300 px-4 py-2 shadow shadow-yellow-300 disabled:opacity-20"
+      class="col-span-2 col-start-1 row-start-6 h-fit rounded bg-yellow-300 px-4 py-2 shadow shadow-yellow-300 disabled:opacity-20 md:row-start-4"
     >
       Submit
     </button>
