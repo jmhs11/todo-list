@@ -57,7 +57,7 @@ jobs:
 
       - name: Deploy to Vercel
         if: ${{ success() }}
-        uses: amondnet/vercel-action@v20.0.1
+        uses: amondnet/vercel-action@v25.1.0
         id: vercel-action
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
